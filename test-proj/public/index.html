@@ -1,0 +1,41 @@
+<html ng-app="myApp">
+ <head>
+   <title> nc test </title>
+   <link href="css/bootstrap.css" rel="stylesheet" />
+   <script src="js/angular.min.js"></script>
+   <script src="features/services/controller.js"></script>
+ </head>
+ <body>
+   <div class="container" ng-controller="ServicesCtrl" >
+     <table class="table">
+       <thead>
+         <tr>
+            <th>Department Name</th>
+            <th>&nbsp</th>
+         </tr>
+         <tr>
+           <td>
+               <input class="form-control" ng-model="serviceClient.name" />
+           </td>
+           <td>
+               <button class="btn btn-primary" ng-click="create()"> Add </button>
+               <button class="btn btn-primary" ng-click="update()"> Update </button>
+           </td>
+         </tr>
+       </thead>
+       <tbody>
+         <tr ng-repeat="serviceClient in services | filter:serviceClient.name | orderBy: 'name'">
+            <td>
+               {{serviceClient.name}}
+            </td>
+            <td>
+               <button ng-click="remove(serviceClient._id)" class="btn btn-danger" > remove </button>
+               <button ng-click="select(serviceClient._id)" class="btn btn-warning" > edit </button>
+            </td>
+         </tr>
+       </tbody>
+      </table>
+   </div>
+ </body>
+</html>
+
